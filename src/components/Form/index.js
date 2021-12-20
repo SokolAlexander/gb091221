@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@mui/material";
+import { Button } from "../Button/Button";
+// import { Button } from "@mui/material";
 
 import "./styles.css";
+
+const Image = ({ src = "" }) => <img src={src} alt="buton" />;
 
 export const Form = ({ onSubmit }) => {
   const [value, setValue] = useState("");
@@ -12,7 +15,7 @@ export const Form = ({ onSubmit }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e?.preventDefault && e.preventDefault();
 
     setValue("");
     onSubmit(value);
@@ -25,10 +28,20 @@ export const Form = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" ref={inputRef} value={value} onChange={handleChange} />
-      {/* <input type="submit" /> */}
-      <Button className="myBtnClass" variant="outlined" type="submit">
-        CLICK
-      </Button>
+      <input type="submit" />
+      {/* <Button
+        onClick={handleSubmit}
+        render={(fontWeight) => (
+          <div>
+            <span style={{ fontWeight }}>Click</span>
+            <Image />
+          </div>
+        )}
+      /> */}
+      {/* <Button onClick={handleSubmit}>
+        <span>child1</span>
+        <div>Child2</div>
+      </Button> */}
     </form>
   );
 };

@@ -3,16 +3,22 @@ import PropTypes from "prop-types";
 
 import "./Button.css";
 
-export const Button = ({ title, onButtonClick }) => {
-  // const title = props.title;
-  // const { title } = props;
+const getFontWeight = () => "bolder";
+
+export const Button = ({ title, onClick, children }) => {
+  const fontWeight = getFontWeight();
+  const childrenArray = React.Children.toArray(children);
   return (
-    <button
-      onClick={() => onButtonClick("hello again")}
-      style={{ backgroundColor: "white", padding: 15 }}
-    >
-      {title}
-    </button>
+    <>
+      <button
+        onClick={() => onClick("hello again")}
+        style={{ backgroundColor: "white", padding: 15 }}
+      >
+        {childrenArray[0]}
+      </button>
+
+      {childrenArray[1]}
+    </>
   );
 };
 
