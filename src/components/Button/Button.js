@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import "./Button.css";
 
 export const Button = ({ title, onButtonClick }) => {
@@ -12,6 +14,11 @@ export const Button = ({ title, onButtonClick }) => {
       {title}
     </button>
   );
+};
+
+Button.propTypes = {
+  title: PropTypes.string.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
 };
 
 // margin-right

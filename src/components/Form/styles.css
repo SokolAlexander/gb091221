@@ -1,0 +1,6 @@
+.MuiButton-root.myBtnClass {
+  background-color: aqua;
+}
+.MuiButton-root.myBtnClass:hover {
+  background-color: black;
+}

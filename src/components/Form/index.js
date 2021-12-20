@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@mui/material";
 
-export const Form = ({ onAddMessage }) => {
+import "./styles.css";
+
+export const Form = ({ onSubmit }) => {
   const [value, setValue] = useState("");
+  const inputRef = useRef();
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -11,12 +15,20 @@ export const Form = ({ onAddMessage }) => {
     e.preventDefault();
 
     setValue("");
-    onAddMessage({ text: value, author: "HUMAN" });
+    onSubmit(value);
   };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={value} onChange={handleChange} />
+      <input type="text" ref={inputRef} value={value} onChange={handleChange} />
+      {/* <input type="submit" /> */}
+      <Button className="myBtnClass" variant="outlined" type="submit">
+        CLICK
+      </Button>
     </form>
   );
 };
