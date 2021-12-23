@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../Button/Button";
-// import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
 
 import "./styles.css";
 
@@ -27,7 +27,8 @@ export const Form = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" ref={inputRef} value={value} onChange={handleChange} />
+      <TextField value={value} onChange={handleChange} inputRef={inputRef} />
+      {/* <input type="text" ref={inputRef} value={value} onChange={handleChange} /> */}
       <input type="submit" />
       {/* <Button
         onClick={handleSubmit}

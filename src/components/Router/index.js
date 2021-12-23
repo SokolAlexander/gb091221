@@ -5,7 +5,7 @@ import { ChatList } from "../ChatList";
 import Chats from "../Chats";
 import { Home } from "../Home";
 import { NoMatch } from "../NoMatch";
-import { Profile } from "../Profile";
+import Profile from "../Profile";
 
 const initialChats = [
   {
@@ -47,7 +47,7 @@ export const Router = () => {
       <ul>
         <li>
           <NavLink
-            style={(isActive) => ({ color: isActive ? "green" : "blue" })}
+            style={(props) => ({ color: props.isActive ? "green" : "blue" })}
             to="/"
           >
             HOME
@@ -55,7 +55,7 @@ export const Router = () => {
         </li>
         <li>
           <NavLink
-            style={(isActive) => ({ color: isActive ? "green" : "blue" })}
+            style={({ isActive }) => ({ color: isActive ? "green" : "blue" })}
             to="/chats"
           >
             Chats
@@ -63,7 +63,7 @@ export const Router = () => {
         </li>
         <li>
           <NavLink
-            style={(isActive) => ({ color: isActive ? "green" : "blue" })}
+            style={({ isActive }) => ({ color: isActive ? "green" : "blue" })}
             to="profile"
           >
             PROFILE
