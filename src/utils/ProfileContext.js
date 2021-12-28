@@ -5,10 +5,8 @@ export const ProfileContext = React.createContext({
   setName: () => {},
 });
 
-export const withProfileContext =
-  (Component) =>
-  (...props) => {
-    const { name, setName } = useContext(ProfileContext);
+export const withProfileContext = (Component) => (props) => {
+  const { name, setName } = useContext(ProfileContext);
 
-    return <Component {...props} name={name} setName={setName} />;
-  };
+  return <Component {...props} name={name} setName={setName} />;
+};

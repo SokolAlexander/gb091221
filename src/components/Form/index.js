@@ -6,7 +6,7 @@ import "./styles.css";
 
 const Image = ({ src = "" }) => <img src={src} alt="buton" />;
 
-export const Form = ({ onSubmit }) => {
+export const Form = (props) => {
   const [value, setValue] = useState("");
   const inputRef = useRef();
 
@@ -18,7 +18,7 @@ export const Form = ({ onSubmit }) => {
     e?.preventDefault && e.preventDefault();
 
     setValue("");
-    onSubmit(value);
+    props.onSubmit(value);
   };
 
   useEffect(() => {
