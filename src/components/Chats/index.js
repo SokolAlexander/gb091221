@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Navigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Form } from "../Form";
 import { MessageList } from "../MessageList";
 import { AUTHORS } from "../../utils/constants";
-import { addMessage } from "../../store/messages/actions";
+import { addMessageWithReply } from "../../store/messages/actions";
 import {
   selectMessages,
   selectMessagesByChatId,
@@ -26,7 +26,7 @@ function Chats() {
   const dispatch = useDispatch();
 
   const onAddMessage = (newMessage, chatId) => {
-    dispatch(addMessage(newMessage, chatId));
+    dispatch(addMessageWithReply(newMessage, chatId));
   };
 
   const handleSubmit = (text) => {
@@ -34,28 +34,28 @@ function Chats() {
     onAddMessage(newMessage, chatId);
   };
 
-  useEffect(() => {
-    let timeout;
-    if (
-      messages[chatId]?.[messages[chatId].length - 1]?.author === AUTHORS.HUMAN
-    ) {
-      timeout = setTimeout(() => {
-        onAddMessage(
-          {
-            text: "iambot",
-            author: AUTHORS.BOT,
-            id: `msg-${Date.now()}`,
-          },
-          chatId
-        );
-      }, 1500);
-    }
+  // useEffect(() => {
+  //   let timeout;
+  //   if (
+  //     messages[chatId]?.[messages[chatId].length - 1]?.author === AUTHORS.HUMAN
+  //   ) {
+  //     timeout = setTimeout(() => {
+  //       onAddMessage(
+  //         {
+  //           text: "iambot",
+  //           author: AUTHORS.BOT,
+  //           id: `msg-${Date.now()}`,
+  //         },
+  //         chatId
+  //       );
+  //     }, 1500);
+  //   }
 
-    return () => {
-      clearTimeout(timeout);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messages]);
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [messages]);
 
   if (!messages[chatId]) {
     return <Navigate to="/chats" replace />;
