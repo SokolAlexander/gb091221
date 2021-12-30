@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Provider } from "react-redux";
 
-import "./App.css";
 import { Router } from "./components/Router";
 import { store } from "./store";
 import { ProfileContext } from "./utils/ProfileContext";
+
+import "./App.css";
 
 function App() {
   const [name, setName] = useState("default");

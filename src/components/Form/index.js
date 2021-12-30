@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Button } from "../Button/Button";
 import { TextField } from "@mui/material";
 
 import "./styles.css";
 
-const Image = ({ src = "" }) => <img src={src} alt="buton" />;
+// const Image = ({ src = "" }) => <img src={src} alt="buton" />;
 
 export const Form = (props) => {
   const [value, setValue] = useState("");

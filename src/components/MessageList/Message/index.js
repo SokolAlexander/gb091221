@@ -1,9 +1,5 @@
-import { useContext } from "react";
 import { AUTHORS } from "../../../utils/constants";
-import {
-  ProfileContext,
-  withProfileContext,
-} from "../../../utils/ProfileContext";
+import { withProfileContext } from "../../../utils/ProfileContext";
 
 export const Message = ({ author, text, name }) => {
   return (

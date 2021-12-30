@@ -1,4 +1,4 @@
-import { ADD_CHAT, SET_NAME, SHOW_NAME } from "./actions";
+import { ADD_CHAT } from "./actions";
 
 const initialState = [];
 

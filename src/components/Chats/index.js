@@ -1,15 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router";
-import "./Chats.css";
+import React, { useEffect, useMemo } from "react";
+import { Navigate, useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Form } from "../Form";
 import { MessageList } from "../MessageList";
 import { AUTHORS } from "../../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../../store/messages/actions";
 import {
   selectMessages,
   selectMessagesByChatId,
 } from "../../store/messages/selectors";
+
+import "./Chats.css";
 
 function Chats() {
   const { chatId } = useParams();
@@ -52,6 +54,7 @@ function Chats() {
     return () => {
       clearTimeout(timeout);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
   if (!messages[chatId]) {

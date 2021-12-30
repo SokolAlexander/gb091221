@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 import "./Button.css";
 
-const getFontWeight = () => "bolder";
+// const getFontWeight = () => "bolder";
 
 export const Button = ({ title, onClick, children }) => {
-  const fontWeight = getFontWeight();
+  // const fontWeight = getFontWeight();
   const childrenArray = React.Children.toArray(children);
   return (
     <>
