@@ -5,7 +5,7 @@ import "./styles.css";
 
 // const Image = ({ src = "" }) => <img src={src} alt="buton" />;
 
-export const Form = forwardRef((props, ref) => {
+export const Form = ({ focusOnChange, onSubmit }) => {
   const [value, setValue] = useState("");
   const inputRef = useRef();
 
@@ -17,16 +17,16 @@ export const Form = forwardRef((props, ref) => {
     e?.preventDefault && e.preventDefault();
 
     setValue("");
-    props.onSubmit(value);
+    onSubmit(value);
   };
 
   useEffect(() => {
     inputRef.current?.focus();
-  }, []);
+  }, [focusOnChange]);
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField value={value} onChange={handleChange} inputRef={ref || inputRef} />
+      <TextField value={value} onChange={handleChange} inputRef={inputRef} />
       {/* <input type="text" ref={inputRef} value={value} onChange={handleChange} /> */}
       <input type="submit" />
       {/* <Button
@@ -44,4 +44,4 @@ export const Form = forwardRef((props, ref) => {
       </Button> */}
     </form>
   );
-});
+};

@@ -16,7 +16,6 @@ import "./Chats.css";
 function Chats() {
   const { chatId } = useParams();
   const messages = useSelector(selectMessages);
-  const formInputRef = useRef();
 
   const getMessagesByChatId = useMemo(
     () => selectMessagesByChatId(chatId),
@@ -58,10 +57,6 @@ function Chats() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [messages]);
 
-  useEffect(() => {
-    formInputRef.current?.focus();
-  }, [chatId]);
-
   if (!messages[chatId]) {
     return <Navigate to="/chats" replace />;
   }
@@ -71,7 +66,7 @@ function Chats() {
       <h3>HEADER</h3>
       <div className="chat-wrap">
         <div className="App">
-          <Form ref={formInputRef} onSubmit={handleSubmit} />
+          <Form focusOnChange={chatId} onSubmit={handleSubmit} />
           <MessageList messages={messagesForCurrentChat} />
         </div>
       </div>
