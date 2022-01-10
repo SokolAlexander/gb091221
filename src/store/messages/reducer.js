@@ -28,15 +28,3 @@ export const messagesReducer = (state = initialState, action) => {
   }
 };
 
-const x = "bar";
-
-const foo = {
-  x: 1,
-};
-
-console.log(foo); // { x: 1 };
-
-const baz = {
-  [x]: 1,
-};
-console.log(baz); // { bar: 1 };

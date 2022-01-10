@@ -5,7 +5,7 @@ import createSagaMiddleware from "redux-saga";
 
 import { chatsReducer } from "./chats/reducer";
 import { messagesReducer } from "./messages/reducer";
-import {  messagesSaga } from "./messages/sagas";
+import { messagesSaga } from "./messages/sagas";
 import { profileReducer } from "./profile/reducer";
 
 const persistConfig = {

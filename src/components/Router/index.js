@@ -42,8 +42,19 @@ export const Router = () => (
         <Route path=":chatId" element={<Chats />} />
       </Route>
       <Route path="/profile" element={<Profile />} />
-
       <Route path="*" element={<NoMatch />} />
     </Routes>
   </BrowserRouter>
 );
+
+/* <Routes>
+<Route path="/" element={<Home />} />
+<Route path="chats" element={<PrivateOutlet isAuthed />}>
+  <Route path="" element={<ChatList />} />
+  <Route path=":chatId" element={<Chats />} />
+</Route>
+<Route path="/profile" element={<PrivateOutlet />}>
+  <Route path="" element={<Profile />} />
+</Route>
+<Route path="*" element={<NoMatch />} />
+</Routes> */

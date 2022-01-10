@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef } from "react";
 import { TextField } from "@mui/material";
 
 import "./styles.css";
 
 // const Image = ({ src = "" }) => <img src={src} alt="buton" />;
 
-export const Form = (props) => {
+export const Form = forwardRef((props, ref) => {
   const [value, setValue] = useState("");
   const inputRef = useRef();
 
@@ -26,7 +26,7 @@ export const Form = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField value={value} onChange={handleChange} inputRef={inputRef} />
+      <TextField value={value} onChange={handleChange} inputRef={ref || inputRef} />
       {/* <input type="text" ref={inputRef} value={value} onChange={handleChange} /> */}
       <input type="submit" />
       {/* <Button
@@ -44,4 +44,4 @@ export const Form = (props) => {
       </Button> */}
     </form>
   );
-};
+});

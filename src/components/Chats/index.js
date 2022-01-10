@@ -1,11 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { Navigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Form } from "../Form";
 import { MessageList } from "../MessageList";
 import { AUTHORS } from "../../utils/constants";
-import { addMessage, addMessageWithReply } from "../../store/messages/actions";
+import { addMessage } from "../../store/messages/actions";
 import {
   selectMessages,
   selectMessagesByChatId,
@@ -16,6 +16,7 @@ import "./Chats.css";
 function Chats() {
   const { chatId } = useParams();
   const messages = useSelector(selectMessages);
+  const formInputRef = useRef();
 
   const getMessagesByChatId = useMemo(
     () => selectMessagesByChatId(chatId),
@@ -57,6 +58,10 @@ function Chats() {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [messages]);
 
+  useEffect(() => {
+    formInputRef.current?.focus();
+  }, [chatId]);
+
   if (!messages[chatId]) {
     return <Navigate to="/chats" replace />;
   }
@@ -66,7 +71,7 @@ function Chats() {
       <h3>HEADER</h3>
       <div className="chat-wrap">
         <div className="App">
-          <Form onSubmit={handleSubmit} />
+          <Form ref={formInputRef} onSubmit={handleSubmit} />
           <MessageList messages={messagesForCurrentChat} />
         </div>
       </div>
