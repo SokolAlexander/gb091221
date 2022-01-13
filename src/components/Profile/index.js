@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import {
   connect,
   // useDispatch, useSelector, shallowEqual
 } from "react-redux";
+import { onValue, set } from "firebase/database";
 
-import { setName, signOut, toggleName } from "../../store/profile/actions";
+import {
+  logOut,
+  userNameRef,
+  userRef,
+  userShowNameRef,
+} from "../../service/firebase";
+import {
+  initUserData,
+  setName,
+  setNameInDB,
+  setShowNameInDB,
+  signOut,
+  toggleName,
+} from "../../store/profile/actions";
 // import { selectShowName, selectUserName } from "../../store/profile/selectors";
 import { Form } from "../Form";
 
@@ -37,10 +52,14 @@ const ProfileForConnect = ({
   userName,
   changeName,
   toggleShowName,
-  logout,
+  connectToDb,
 }) => {
-  const handleChange = () => {
-    toggleShowName();
+  useEffect(() => {
+    connectToDb();
+  }, []);
+
+  const handleChange = (e) => {
+    toggleShowName(e.target.checked);
   };
 
   const handleSubmit = (newName) => {
@@ -50,7 +69,7 @@ const ProfileForConnect = ({
   return (
     <>
       <h3>THIS IS PROFILE</h3>
-      <button onClick={logout}>SignOut</button>
+      <button onClick={logOut}>SignOut</button>
       <input type="checkbox" checked={showName} onChange={handleChange} />
       {showName && <span>{userName}</span>}
       <Form onSubmit={handleSubmit} />
@@ -64,9 +83,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  changeName: setName,
-  toggleShowName: () => toggleName,
-  logout: signOut,
+  changeName: setNameInDB,
+  toggleShowName: setShowNameInDB,
+  connectToDb: initUserData,
 };
 
 const ConnectedProfile = connect(
