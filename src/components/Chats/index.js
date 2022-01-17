@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form } from "../Form";
 import { MessageList } from "../MessageList";
 import { AUTHORS } from "../../utils/constants";
-import { addMessage } from "../../store/messages/actions";
+import {
+  addMessage,
+  addMessageWithReply,
+  addMsgWithFb,
+} from "../../store/messages/actions";
 import {
   selectMessages,
   selectMessagesByChatId,
@@ -26,7 +30,7 @@ function Chats() {
   const dispatch = useDispatch();
 
   const onAddMessage = (newMessage, chatId) => {
-    dispatch(addMessage(newMessage, chatId));
+    dispatch(addMsgWithFb(newMessage, chatId));
   };
 
   const handleSubmit = (text) => {

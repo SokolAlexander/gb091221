@@ -78,14 +78,30 @@ export const Router = () => {
   );
 };
 
-/* <Routes>
-<Route path="/" element={<Home />} />
-<Route path="chats" element={<PrivateOutlet isAuthed />}>
-  <Route path="" element={<ChatList />} />
-  <Route path=":chatId" element={<Chats />} />
-</Route>
-<Route path="/profile" element={<PrivateOutlet />}>
-  <Route path="" element={<Profile />} />
-</Route>
-<Route path="*" element={<NoMatch />} />
-</Routes> */
+// const [msgs, setMsgs] = useState({});
+// useEffect(() => {
+//   onValue(messagesRef, (snapshot) => {
+//     const newMsgs = {};
+
+//     snapshot.forEach((chatMsgsSnap) => {
+//       newMsgs[chatMsgsSnap.key] = Object.values(
+//         chatMsgsSnap.val().messageList || {}
+//       );
+//     });
+
+//     setMsgs(newMsgs);
+//   });
+// }, []);
+
+// const handleSendMessage = useCallback(
+//   (newMessage) => {
+//     // dispatch(addMessage(chatId, newMessage));
+//     // sendMessage(chatId, newMessage);
+//     push(getChatMsgsListRefById(chatId), newMessage);
+//   },
+//   [chatId, sendMessage]
+// );
+
+// set(getChatMsgsRefById(newChat.id), { empty: true });
+
+// export const getChatMsgsListRefById = (chatId) => ref(db, `messages/${chatId}/messageList`);
