@@ -3,7 +3,7 @@ import { withProfileContext } from "../../../utils/ProfileContext";
 
 export const Message = ({ author, text, name }) => {
   return (
-    <div className={author === AUTHORS.HUMAN ? "human-msg" : "bot-msg"}>
+    <div className={author === AUTHORS.HUMAN ? "human-msg" : "bot2-msg"}>
       {author === AUTHORS.HUMAN ? name : author}: {text}
     </div>
   );
